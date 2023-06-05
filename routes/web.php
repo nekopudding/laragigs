@@ -15,15 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/listings', function () {
+Route::get('/{name}', function () {
     return view('listings', [
         'heading' => 'Listings',
         'listings' => Listing::all(),
     ]);
-});
+})->where('name', '(listings|)');
 
-Route::get('/listings/{id}', function ($id) {
+Route::get('/listings/{listing}', function (Listing $listing) {
     return view('listing', [
-        'listing' => Listing::find($id),
+        'listing' => $listing,
     ]);
 });
