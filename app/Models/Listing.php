@@ -11,8 +11,17 @@ class Listing extends Model
 
     public function scopeFilter($query, array $filters) {
         if($filters['tag'] ?? false) {
-            //tag is present
-            $query->where('tags', 'like', '%' . $filters['tag'] . '%');
+            //tag is present in job posting
+            $query->where('tags', 'like', '%' . request('tag') . '%');
+        }
+
+        if($filters['search'] ?? false) {
+            //tag is present in job posting
+            $query->where('title', 'like', '%' . request('search') . '%')
+            ->orWhere('description', 'like', '%' . request('search') . '%')
+            ->orWhere('tags', 'like', '%' . request('search') . '%')
+            ->orWhere('company', 'like', '%' . request('search') . '%')
+            ->orWhere('location', 'like', '%' . request('search') . '%');
         }
     }
 }
