@@ -28,4 +28,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/{name}', [ListingController::class,'index'])
 ->where('name', '(listings|)');
 
+Route::get('/listings/create', [ListingController::class,'create']);
+
+Route::post('/listings', [ListingController::class,'store']);
+
 Route::get('/listings/{listing}', [ListingController::class,'show']);

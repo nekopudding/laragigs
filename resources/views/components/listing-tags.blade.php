@@ -1,7 +1,7 @@
 @props(['tagsCsv'])
 
 @php
-$tags = preg_split('(,|\s)', $tagsCsv); //split by regex
+$tags = explode(',', $tagsCsv); //split by regex
 @endphp
 
 <ul class="flex">

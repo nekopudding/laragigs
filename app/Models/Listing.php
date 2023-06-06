@@ -9,6 +9,17 @@ class Listing extends Model
 {
     use HasFactory;
 
+    //allow mass assignment for these fields
+    protected $fillable = [
+        'title',
+        'company',
+        'location',
+        'website',
+        'email',
+        'description',
+        'tags',
+    ];
+
     public function scopeFilter($query, array $filters) {
         if($filters['tag'] ?? false) {
             //tag is present in job posting
