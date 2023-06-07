@@ -51,7 +51,7 @@ class ListingController extends Controller
     }
 
     //update listing
-    function update(Listing $listing) {
+    public function update(Listing $listing) {
         $formFields = request()->validate([
             'title' => 'required',
             'company' => 'required', //unique in listings table, company column
@@ -71,9 +71,15 @@ class ListingController extends Controller
         return redirect('/listings/' . $listing->id)->with('success', 'Listing updated successfully!');
     }
 
-    function edit(Listing $listing) {
+    public function edit(Listing $listing) {
         return view('listings.edit', [
             'listing' => $listing,
         ]);
+    }
+
+    public function destroy(Listing $listing) {
+        $listing->delete();
+
+        return redirect('/')->with('success', 'Listing deleted successfully!');
     }
 }

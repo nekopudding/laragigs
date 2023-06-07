@@ -38,6 +38,9 @@ Route::get('/listings/{listing}/edit', [ListingController::class,'edit']);
 // Edit form submission
 Route::put('/listings/{listing}', [ListingController::class,'update']);
 
+// Delete listing
+Route::delete('/listings/{listing}', [ListingController::class,'destroy']);
+
 // Store listing
 Route::post('/listings', [ListingController::class,'store']);
 
