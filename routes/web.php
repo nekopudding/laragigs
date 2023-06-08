@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
 use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,3 +47,17 @@ Route::post('/listings', [ListingController::class,'store']);
 
 //Show single listing
 Route::get('/listings/{listing}', [ListingController::class,'show']);
+
+//Show register form
+Route::get('/register', [UserController::class,'create']);
+
+//Show login form
+Route::get('/login', [UserController::class,'login']);
+
+//Login form submission
+Route::post('/users/authenticate', [UserController::class,'authenticate']); 
+
+//Logout
+Route::post('/logout', [UserController::class,'logout']);
+
+Route::post('/users', [UserController::class,'store']);
