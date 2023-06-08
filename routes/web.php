@@ -37,6 +37,9 @@ Route::get('/listings/create', [ListingController::class,'create'])
 Route::get('/listings/{listing}/edit', [ListingController::class,'edit'])
 ->middleware('auth');
 
+// Store listing
+Route::post('/listings', [ListingController::class,'store']);
+
 // Edit form submission
 Route::put('/listings/{listing}', [ListingController::class,'update'])
 ->middleware('auth');
@@ -45,8 +48,9 @@ Route::put('/listings/{listing}', [ListingController::class,'update'])
 Route::delete('/listings/{listing}', [ListingController::class,'destroy'])
 ->middleware('auth');
 
-// Store listing
-Route::post('/listings', [ListingController::class,'store']);
+// Manage listings
+Route::get('/listings/manage', [ListingController::class,'manage'])
+->middleware('auth');
 
 //Show single listing
 Route::get('/listings/{listing}', [ListingController::class,'show']);
@@ -68,3 +72,5 @@ Route::post('/logout', [UserController::class,'logout'])
 
 // Store new user
 Route::post('/users', [UserController::class,'store']);
+
+

@@ -12,6 +12,7 @@ class UserController extends Controller
         return view('users.create');
     }
 
+    //Store user
     public function store(Request $request) {
         $formFields = $request->validate([
             'name' => 'required|min:3',
@@ -42,6 +43,7 @@ class UserController extends Controller
         return view('users.login');
     }
 
+    // Authenticate user
     public function authenticate(Request $request) {
         $formFields = $request->validate([
             'email' => 'required|email', //unique in users table, email column
